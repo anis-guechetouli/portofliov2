@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>E5 | Anis Guechetouli</title>
+        <meta
+            name="description"
+            content="Page E5 du portfolio d'Anis Guechetouli pour le BTS SIO SISR."/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap"
+            rel="stylesheet"/>
+        <link rel="stylesheet" href="styles.css?v=20260324e5"/>
+    </head>
+    <body>
+        <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+        <div class="bg-grid" aria-hidden="true"></div>
+
+        <header class="site-header">
+            <div class="container nav-wrap">
+                <a href="index.html#home" class="brand">
+                    <span class="brand-mark">AG</span>
+                    <span class="brand-text">Anis Guechetouli</span>
+                </a>
+                <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">Menu</button>
+                <nav class="nav" id="siteNav">
+                    <a href="index.html#profil">Profil</a>
+                    <a href="index.html#parcours">Parcours</a>
+                    <a href="index.html#projets">Projets</a>
+                    <a href="e5.html">E5</a>
+                    <a href="e6.html">E6</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero container reveal subpage-hero">
+                <p class="eyebrow">BTS SIO SISR</p>
+                <h1>E5</h1>
+                <p class="lead">
+                    Épreuve centrée sur le support, la mise à disposition de services informatiques et
+                    la gestion d'environnements techniques. Cette page peut servir de vitrine pour tes
+                    missions, tes réalisations et les compétences validées.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#situations">Voir les situations</a>
+                    <a class="btn btn-ghost" href="index.html#projets">Retour au portfolio</a>
+                </div>
+            </section>
+
+            <section class="section container reveal">
+                <div class="section-head">
+                    <h2>Présentation de l'épreuve</h2>
+                </div>
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>Objectif</h3>
+                        <p>
+                            Montrer ta capacité à installer, administrer, maintenir et faire évoluer des
+                            services informatiques dans un contexte professionnel.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <h3>Compétences mises en avant</h3>
+                        <div class="pill-wrap">
+                            <span class="pill">Support utilisateur</span>
+                            <span class="pill">Administration système</span>
+                            <span class="pill">Réseau</span>
+                            <span class="pill">Documentation</span>
+                            <span class="pill">Supervision</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="situations" class="section container reveal">
+                <div class="section-head">
+                    <h2>Situations professionnelles</h2>
+                </div>
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>Exemple 1 - Support et préparation de postes</h3>
+                        <p>
+                            Déploiement, configuration et maintenance de postes de travail pour répondre
+                            aux besoins des utilisateurs.
+                        </p>
+                        <ul>
+                            <li>Installation système et logiciels</li>
+                            <li>Mise à jour des pilotes et des outils</li>
+                            <li>Résolution d'incidents courants</li>
+                            <li>Rédaction de procédures de support</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Exemple 2 - Mise en place d'un service réseau</h3>
+                        <p>
+                            Déploiement d'un partage réseau ou d'un service interne avec contrôle d'accès
+                            et documentation technique.
+                        </p>
+                        <ul>
+                            <li>Création des accès et gestion des droits</li>
+                            <li>Tests de fonctionnement</li>
+                            <li>Sécurisation basique du service</li>
+                            <li>Guide d'utilisation pour l'équipe</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section container reveal">
+                <div class="section-head">
+                    <h2>Outils et environnement</h2>
+                </div>
+                <article class="card">
+                    <div class="pill-wrap">
+                        <span class="pill">Windows</span>
+                        <span class="pill">Linux</span>
+                        <span class="pill">Active Directory</span>
+                        <span class="pill">Virtualisation</span>
+                        <span class="pill">Réseau local</span>
+                        <span class="pill">Documentation technique</span>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>© <span id="year"></span> Anis Guechetouli - Page E5</p>
+            </div>
+        </footer>
+
+        <button class="back-top" id="backTopBtn" type="button" aria-label="Remonter en haut">↑</button>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <script src="script.js?v=20260324e5"></script>
+    </body>
+</html>

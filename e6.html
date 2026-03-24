@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>E6 | Anis Guechetouli</title>
+        <meta
+            name="description"
+            content="Page E6 du portfolio d'Anis Guechetouli pour le BTS SIO SISR."/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap"
+            rel="stylesheet"/>
+        <link rel="stylesheet" href="styles.css?v=20260324e6"/>
+    </head>
+    <body>
+        <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+        <div class="bg-grid" aria-hidden="true"></div>
+
+        <header class="site-header">
+            <div class="container nav-wrap">
+                <a href="index.html#home" class="brand">
+                    <span class="brand-mark">AG</span>
+                    <span class="brand-text">Anis Guechetouli</span>
+                </a>
+                <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">Menu</button>
+                <nav class="nav" id="siteNav">
+                    <a href="index.html#profil">Profil</a>
+                    <a href="index.html#parcours">Parcours</a>
+                    <a href="index.html#projets">Projets</a>
+                    <a href="e5.html">E5</a>
+                    <a href="e6.html">E6</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero container reveal subpage-hero">
+                <p class="eyebrow">BTS SIO SISR</p>
+                <h1>E6</h1>
+                <p class="lead">
+                    Épreuve orientée administration des systèmes et des réseaux. Cette page présente mes
+                    deux réalisations professionnelles menées dans le contexte Stadium Company pour la
+                    session 2026 du BTS SIO option SISR.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#rp1">Voir RP1</a>
+                    <a class="btn btn-ghost" href="#rp2">Voir RP2</a>
+                    <a class="btn btn-ghost" href="https://dandy-cowbell-23a.notion.site/ARBITRES-OFFICIELS-322beac706b7800fac97c70ebd43071c">Accès jury</a>
+                </div>
+                <div class="hero-meta">
+                    <span class="status-dot">Session 2026</span>
+                    <span class="status-dot">Candidat n° 2544739145</span>
+                    <span class="status-dot">IRIS Paris 17e</span>
+                </div>
+            </section>
+
+            <section class="section container reveal">
+                <div class="section-head">
+                    <h2>Contexte général</h2>
+                </div>
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>Organisation support</h3>
+                        <p>
+                            La situation professionnelle s'appuie sur le contexte <strong>Stadium
+                            Company</strong>. Stadium gère l'administration et l'organisation du site,
+                            et fait appel à <strong>Networking Company</strong> pour concevoir et mettre
+                            en place les solutions systèmes et réseaux.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <h3>Compétences mobilisées</h3>
+                        <div class="pill-wrap">
+                            <span class="pill">Concevoir une infrastructure réseau</span>
+                            <span class="pill">Installer, tester et déployer</span>
+                            <span class="pill">Exploiter et dépanner</span>
+                            <span class="pill">Superviser une infrastructure</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="rp1" class="section container reveal">
+                <div class="section-head">
+                    <h2>RP1 - Accès VAR et Rapports de Match</h2>
+                </div>
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>Fiche d'identité</h3>
+                        <ul>
+                            <li>Réalisation n° 01</li>
+                            <li>Période : mars 2026</li>
+                            <li>Lieu : IRIS École supérieure d'informatique, Paris 17e</li>
+                            <li>Modalité : seul</li>
+                            <li>Intitulé : accès VAR et rapports de match</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Objectif</h3>
+                        <p>
+                            Mettre à disposition un accès réseau sécurisé, isolé et performant pour les
+                            arbitres afin de consulter les flux VAR et déposer leurs rapports de match
+                            dans un espace réseau dédié.
+                        </p>
+                    </article>
+                </div>
+                <div class="grid two-cols mt-24">
+                    <article class="card">
+                        <h3>Résultats attendus</h3>
+                        <ul>
+                            <li>Disponibilité du SSID <strong>Referee-Wifi</strong> sur le VLAN 50 pour
+                                le visionnage des flux VAR sans coupure</li>
+                            <li>Comptes Active Directory <strong>Arbitre</strong> opérationnels avec
+                                désactivation automatique via PowerShell en fin de match</li>
+                            <li>Montage automatique du lecteur réseau <strong>R:</strong> sur les
+                                sessions arbitres grâce à une GPO</li>
+                            <li>Isolation complète du VLAN 50 vis-à-vis du reste de l'infrastructure via
+                                filtrage sur le pare-feu</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Ressources utilisées</h3>
+                        <ul>
+                            <li>Matériel : Cisco 2821, Catalyst 2960, borne AIR-CAP3502I, serveur DELL
+                                PowerEdge R740</li>
+                            <li>Virtualisation : VMware vSphere ESXi 8.1</li>
+                            <li>Systèmes : Windows Server 2022, Windows 11, Debian 12</li>
+                            <li>Outils : PuTTY, Wireshark, OCS/GLPI, Zimbra, Snort</li>
+                            <li>Documents : contexte Stadium, cahier des charges, environnement
+                                technologique d'apprentissage</li>
+                        </ul>
+                    </article>
+                </div>
+                <article class="card mt-24">
+                    <h3>Description de la réalisation</h3>
+                    <p>
+                        J'ai déployé une infrastructure système et réseau dédiée aux officiels de match.
+                        La solution repose sur un <strong>VLAN 50</strong> en
+                        <strong>172.20.5.0/24</strong> et sur le SSID
+                        <strong>Referee-Wifi</strong>. La gestion des utilisateurs est centralisée sur un
+                        contrôleur de domaine Active Directory avec automatisation des accès par GPO et
+                        par script PowerShell.
+                    </p>
+                </article>
+                <div class="grid two-cols mt-24">
+                    <article class="card">
+                        <h3>Étapes de mise en place</h3>
+                        <ul>
+                            <li>Création du VLAN 50 sur le switch et configuration du routage avec ACL
+                                d'isolation</li>
+                            <li>Configuration de la borne Wi-Fi avec le SSID
+                                <strong>Referee-Wifi</strong> taggé sur le VLAN 50</li>
+                            <li>Création des comptes <strong>Arbitre</strong> dans l'Active Directory</li>
+                            <li>Mise en place d'un partage de fichiers sécurisé pour les rapports</li>
+                            <li>Déploiement d'une GPO pour mapper automatiquement le lecteur
+                                <strong>R:</strong></li>
+                            <li>Création d'un script PowerShell pour désactiver les comptes après le
+                                match</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Éléments techniques clés</h3>
+                        <div class="pill-wrap">
+                            <span class="pill">VLAN 50</span>
+                            <span class="pill">172.20.5.0/24</span>
+                            <span class="pill">ACL / filtrage</span>
+                            <span class="pill">Active Directory</span>
+                            <span class="pill">GPO</span>
+                            <span class="pill">PowerShell</span>
+                            <span class="pill">Wi-Fi 802.1Q</span>
+                            <span class="pill">Partage réseau</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="rp2" class="section container reveal">
+                <div class="section-head">
+                    <h2>RP2 - Support de Match et Communication</h2>
+                </div>
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>Fiche d'identité</h3>
+                        <ul>
+                            <li>Réalisation n° 02</li>
+                            <li>Période : mars 2026</li>
+                            <li>Lieu : IRIS École supérieure d'informatique, Paris 17e</li>
+                            <li>Modalité : seul</li>
+                            <li>Intitulé : support de match et communication</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Objectif</h3>
+                        <p>
+                            Garantir le maintien en condition opérationnelle de l'environnement déployé
+                            pendant les matchs, assurer le suivi des incidents, l'inventaire des tablettes
+                            VAR et la communication officielle avec les arbitres.
+                        </p>
+                    </article>
+                </div>
+                <div class="grid two-cols mt-24">
+                    <article class="card">
+                        <h3>Résultats attendus</h3>
+                        <ul>
+                            <li>Supervision temps réel de la borne <strong>Referee-Wifi</strong> et des
+                                serveurs critiques via Nagios</li>
+                            <li>Création automatique d'un ticket GLPI lors d'une panne détectée par la
+                                supervision</li>
+                            <li>Inventaire centralisé de 100 % des tablettes VAR via OCS Inventory et
+                                GLPI</li>
+                            <li>Mise en service de Zimbra pour les convocations et informations
+                                techniques</li>
+                            <li>Traçabilité complète des incidents et interventions dans GLPI</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Ressources utilisées</h3>
+                        <ul>
+                            <li>Matériel : Cisco 2821, Catalyst 2960, borne AIR-CAP3502I, serveur DELL
+                                PowerEdge R740</li>
+                            <li>Virtualisation : VMware vSphere ESXi 8.1</li>
+                            <li>Systèmes : Windows Server 2022, Windows 11, Debian 12</li>
+                            <li>Solutions déployées : Nagios, GLPI, OCS Inventory, Zimbra</li>
+                            <li>Outils complémentaires : Snort, PuTTY, Wireshark</li>
+                        </ul>
+                    </article>
+                </div>
+                <article class="card mt-24">
+                    <h3>Description de la réalisation</h3>
+                    <p>
+                        Après le déploiement de l'accès réseau dans la RP1, j'ai mis en œuvre une
+                        plateforme de gestion et de surveillance centralisée afin d'assurer le
+                        <strong>MCO</strong> de l'infrastructure. J'ai supervisé les équipements réseaux,
+                        automatisé la gestion des incidents, organisé l'inventaire du parc mobile et
+                        installé une solution de messagerie collaborative dédiée aux officiels.
+                    </p>
+                </article>
+                <div class="grid two-cols mt-24">
+                    <article class="card">
+                        <h3>Composants mis en place</h3>
+                        <ul>
+                            <li>Supervision avec <strong>Nagios</strong> pour suivre la borne Wi-Fi et les
+                                serveurs critiques avec alertes</li>
+                            <li>Helpdesk <strong>GLPI</strong> avec historique des incidents et des
+                                modifications techniques</li>
+                            <li>Inventaire automatisé via <strong>OCS Inventory</strong> pour remonter les
+                                caractéristiques des tablettes VAR</li>
+                            <li>Messagerie collaborative <strong>Zimbra</strong> pour les boîtes mail et
+                                les listes de diffusion des officiels</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Enjeux couverts</h3>
+                        <div class="pill-wrap">
+                            <span class="pill">SLA critique</span>
+                            <span class="pill">Supervision proactive</span>
+                            <span class="pill">Automatisation du support</span>
+                            <span class="pill">Inventaire du parc</span>
+                            <span class="pill">Communication centralisée</span>
+                            <span class="pill">Traçabilité</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="documents" class="section container reveal">
+                <div class="section-head">
+                    <h2>Accès aux productions et documentation</h2>
+                </div>
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>Accès jury</h3>
+                        <p>
+                            Le jury peut consulter les productions associées à mes situations
+                            professionnelles via les liens ci-dessous.
+                        </p>
+                        <div class="project-actions">
+                            <a
+                                href="https://anis-igtepf05g-anis-guechetoulis-projects.vercel.app/"
+                                target="_blank"
+                                rel="noreferrer">Portfolio</a>
+                            <a
+                                href="https://dandy-cowbell-23a.notion.site/ARBITRES-OFFICIELS-322beac706b7800fac97c70ebd43071c"
+                                target="_blank"
+                                rel="noreferrer">Documentation RP1 / RP2</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Synthèse</h3>
+                        <p>
+                            Ces deux réalisations montrent une progression logique : d'abord la mise en
+                            place d'un accès technique sécurisé pour les arbitres, puis la supervision,
+                            l'exploitation et la communication nécessaires au bon déroulement des matchs.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section container reveal">
+                <div class="section-head">
+                    <h2>Outils mobilisés</h2>
+                </div>
+                <article class="card">
+                    <div class="pill-wrap">
+                        <span class="pill">Cisco 2821</span>
+                        <span class="pill">Catalyst 2960</span>
+                        <span class="pill">AIR-CAP3502I</span>
+                        <span class="pill">VMware ESXi 8.1</span>
+                        <span class="pill">Windows Server 2022</span>
+                        <span class="pill">Debian 12</span>
+                        <span class="pill">Active Directory</span>
+                        <span class="pill">GPO</span>
+                        <span class="pill">PowerShell</span>
+                        <span class="pill">Nagios</span>
+                        <span class="pill">GLPI</span>
+                        <span class="pill">OCS Inventory</span>
+                        <span class="pill">Zimbra</span>
+                        <span class="pill">Snort</span>
+                        <span class="pill">Wireshark</span>
+                        <span class="pill">PuTTY</span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section container reveal">
+                <div class="section-head">
+                    <h2>Retour au portfolio</h2>
+                </div>
+                <div class="hero-actions">
+                    <a class="btn btn-ghost" href="index.html#projets">Retour au portfolio</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>© <span id="year"></span> Anis Guechetouli - Page E6</p>
+            </div>
+        </footer>
+
+        <button class="back-top" id="backTopBtn" type="button" aria-label="Remonter en haut">↑</button>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <script src="script.js?v=20260324e6"></script>
+    </body>
+</html>
