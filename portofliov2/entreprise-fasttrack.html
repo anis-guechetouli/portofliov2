@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>FastTrack — Stages | Anis Guechetouli</title>
+        <meta
+            name="description"
+            content="Documentation des stages chez FastTrack — Support / Réseau 2025 et Développement Web 2024."/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin="crossorigin"/>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap"
+            rel="stylesheet"/>
+        <link rel="stylesheet" href="styles.css"/>
+        <style>
+
+            /* ═══════════════════════════════════════
+           FASTTRACK — page-specific styles
+        ═══════════════════════════════════════ */
+
+            /* ── Hero ── */
+            .ft-hero {
+                padding: 5.5rem 0 3.5rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .ft-hero-bg {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                background: radial-gradient(ellipse 60% 50% at 80% 30%, rgba(240,176,109,0.12), transparent 70%), radial-gradient(ellipse 50% 60% at 5% 70%, rgba(130,231,191,0.10), transparent 60%);
+                z-index: 0;
+            }
+
+            .ft-hero-content {
+                position: relative;
+                z-index: 1;
+                max-width: 680px;
+            }
+
+            .ft-company-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.55rem;
+                background: rgba(240,176,109,0.08);
+                border: 1px solid rgba(240,176,109,0.35);
+                border-radius: 999px;
+                padding: 0.3rem 0.9rem 0.3rem 0.55rem;
+                margin-bottom: 1.4rem;
+            }
+            .ft-company-badge-dot {
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--warm), #e8963a);
+                display: grid;
+                place-items: center;
+                font-size: 0.75rem;
+                font-weight: 900;
+                color: #1a0e00;
+                font-family: 'Space Grotesk', sans-serif;
+                flex-shrink: 0;
+            }
+            .ft-company-badge span {
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: var(--warm);
+                font-family: 'Space Grotesk', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.07em;
+            }
+
+            .ft-year-pills {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-top: 1.2rem;
+            }
+            .ft-year-pill {
+                font-size: 0.77rem;
+                font-weight: 700;
+                font-family: 'Space Grotesk', sans-serif;
+                padding: 0.24rem 0.7rem;
+                border-radius: 999px;
+                border: 1px solid var(--line);
+                background: rgba(130,231,191,0.05);
+                color: var(--muted);
+            }
+            .ft-year-pill.it {
+                color: var(--accent);
+                border-color: rgba(130,231,191,0.35);
+                background: rgba(130,231,191,0.08);
+            }
+            .ft-year-pill.web {
+                color: var(--warm);
+                border-color: rgba(240,176,109,0.35);
+                background: rgba(240,176,109,0.08);
+            }
+
+            /* ── Timeline connector ── */
+            .ft-timeline {
+                position: relative;
+                display: grid;
+                gap: 3.5rem;
+                padding: 1rem 0;
+            }
+            .ft-timeline::before {
+                content: '';
+                position: absolute;
+                left: 23px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(to bottom, var(--accent), var(--warm), transparent);
+                border-radius: 999px;
+            }
+
+            .ft-entry {
+                display: grid;
+                grid-template-columns: 48px 1fr;
+                gap: 1.4rem;
+                align-items: start;
+            }
+
+            .ft-dot {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                font-family: 'Space Grotesk', sans-serif;
+                font-weight: 900;
+                font-size: 0.85rem;
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1;
+            }
+            .ft-dot.it {
+                background: linear-gradient(135deg, #36d495, #82e7bf);
+                color: #03130d;
+                box-shadow: 0 0 0 6px rgba(54,212,149,0.15), 0 6px 24px rgba(54,212,149,0.35);
+            }
+            .ft-dot.web {
+                background: linear-gradient(135deg, #f0b06d, #e8963a);
+                color: #1a0e00;
+                box-shadow: 0 0 0 6px rgba(240,176,109,0.15), 0 6px 24px rgba(240,176,109,0.35);
+            }
+
+            .ft-entry-body {
+                display: grid;
+                gap: 1rem;
+            }
+
+            /* ── Stage header card ── */
+            .stage-header {
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 1.1rem;
+                padding: 1.4rem 1.5rem;
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 1rem;
+                flex-wrap: wrap;
+                box-shadow: var(--shadow);
+            }
+            .stage-header.it {
+                border-top: 3px solid var(--accent-strong);
+            }
+            .stage-header.web {
+                border-top: 3px solid var(--warm);
+            }
+
+            .stage-header-left {
+                display: grid;
+                gap: 0.3rem;
+            }
+            .stage-year-tag {
+                font-size: 0.73rem;
+                font-weight: 700;
+                font-family: 'Space Grotesk', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .stage-year-tag.it {
+                color: var(--accent);
+            }
+            .stage-year-tag.web {
+                color: var(--warm);
+            }
+            .stage-title {
+                font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+                color: var(--text);
+                margin: 0;
+            }
+            .stage-subtitle {
+                color: var(--muted);
+                font-size: 0.9rem;
+            }
+
+            .stage-meta {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.4rem;
+            }
+            .stage-duration {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 1.7rem;
+                font-weight: 900;
+                line-height: 1;
+            }
+            .stage-duration.it {
+                color: var(--accent);
+            }
+            .stage-duration.web {
+                color: var(--warm);
+            }
+            .stage-duration-label {
+                font-size: 0.78rem;
+                color: var(--muted);
+                text-align: right;
+            }
+
+            /* ── Image grid ── */
+            .img-mosaic {
+                display: grid;
+                gap: 0.8rem;
+            }
+            .img-mosaic.two {
+                grid-template-columns: 1fr 1fr;
+            }
+            .img-mosaic.three {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .img-slot {
+                border-radius: 0.85rem;
+                overflow: hidden;
+                border: 1px solid rgba(130,231,191,0.18);
+                background: rgba(7,16,18,0.82);
+                min-height: 180px;
+                display: grid;
+                place-items: center;
+                position: relative;
+            }
+            .img-slot.tall {
+                min-height: 380px;
+                grid-row: 1 / 3;
+            }
+
+            .img-slot img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                position: absolute;
+                inset: 0;
+            }
+
+            .img-placeholder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.55rem;
+                padding: 1.2rem;
+                text-align: center;
+            }
+            .img-placeholder-icon {
+                width: 46px;
+                height: 46px;
+                border-radius: 0.7rem;
+                background: rgba(130,231,191,0.07);
+                border: 1px dashed rgba(130,231,191,0.3);
+                display: grid;
+                place-items: center;
+                font-size: 1.3rem;
+            }
+            .img-placeholder p {
+                margin: 0;
+                font-size: 0.78rem;
+                color: rgba(149,172,166,0.6);
+                max-width: 14ch;
+            }
+
+            .img-caption {
+                position: absolute;
+                left: 0.7rem;
+                right: 0.7rem;
+                bottom: 0.7rem;
+                background: rgba(4,18,15,0.82);
+                border: 1px solid rgba(130,231,191,0.15);
+                border-radius: 0.55rem;
+                padding: 0.35rem 0.6rem;
+                font-size: 0.76rem;
+                color: var(--muted);
+                pointer-events: none;
+            }
+
+            /* ── Task cards ── */
+            .task-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.8rem;
+            }
+
+            .task-card {
+                background: rgba(8,20,22,0.72);
+                border: 1px solid var(--line);
+                border-radius: 0.9rem;
+                padding: 1rem;
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .task-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 0.6rem;
+                display: grid;
+                place-items: center;
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+            .task-icon.it-c {
+                background: rgba(130,231,191,0.1);
+                border: 1px solid rgba(130,231,191,0.22);
+            }
+            .task-icon.web-c {
+                background: rgba(240,176,109,0.1);
+                border: 1px solid rgba(240,176,109,0.22);
+            }
+
+            .task-name {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 0.92rem;
+                font-weight: 700;
+                color: var(--text);
+                margin: 0;
+            }
+            .task-desc {
+                font-size: 0.85rem;
+                color: var(--muted);
+                margin: 0;
+                line-height: 1.55;
+            }
+
+            /* ── Tech stack pills ── */
+            .tech-stack {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem;
+            }
+            .tech-pill {
+                font-size: 0.8rem;
+                font-family: 'Space Grotesk', sans-serif;
+                font-weight: 700;
+                padding: 0.28rem 0.75rem;
+                border-radius: 999px;
+            }
+            .tech-pill.it-t {
+                background: rgba(130,231,191,0.09);
+                border: 1px solid rgba(130,231,191,0.3);
+                color: var(--accent);
+            }
+            .tech-pill.web-t {
+                background: rgba(240,176,109,0.09);
+                border: 1px solid rgba(240,176,109,0.3);
+                color: var(--warm);
+            }
+            .tech-pill.neu {
+                background: rgba(149,172,166,0.07);
+                border: 1px solid rgba(149,172,166,0.2);
+                color: var(--muted);
+            }
+
+            /* ── Context callout ── */
+            .context-card {
+                border-radius: 1rem;
+                padding: 1.2rem 1.3rem;
+                display: grid;
+                gap: 0.6rem;
+            }
+            .context-card.it-ctx {
+                background: rgba(130,231,191,0.05);
+                border: 1px solid rgba(130,231,191,0.2);
+            }
+            .context-card.web-ctx {
+                background: rgba(240,176,109,0.05);
+                border: 1px solid rgba(240,176,109,0.2);
+            }
+            .context-card h4 {
+                font-size: 0.95rem;
+                color: var(--text);
+                margin: 0;
+            }
+            .context-card p {
+                font-size: 0.87rem;
+                color: var(--muted);
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            /* ── Section heading ── */
+            .doc-section {
+                padding: 2.5rem 0;
+            }
+            .doc-section-title {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 1.4rem;
+            }
+            .doc-section-title h2 {
+                margin: 0;
+                font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            }
+            .doc-icon {
+                width: 38px;
+                height: 38px;
+                border-radius: 0.65rem;
+                background: rgba(130,231,191,0.1);
+                border: 1px solid rgba(130,231,191,0.25);
+                display: grid;
+                place-items: center;
+                font-size: 1.1rem;
+                flex-shrink: 0;
+            }
+            .doc-icon.warm-ic {
+                background: rgba(240,176,109,0.1);
+                border-color: rgba(240,176,109,0.25);
+            }
+
+            /* ── Skills recap ── */
+            .skill-recap-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.9rem;
+            }
+            .skill-recap-card {
+                background: rgba(8,20,22,0.7);
+                border: 1px solid var(--line);
+                border-radius: 0.9rem;
+                padding: 1rem;
+                display: grid;
+                gap: 0.45rem;
+            }
+            .skill-recap-label {
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.09em;
+                color: var(--muted);
+                font-family: 'Space Grotesk', sans-serif;
+            }
+            .skill-recap-value {
+                font-size: 1rem;
+                font-weight: 700;
+                color: var(--text);
+                font-family: 'Space Grotesk', sans-serif;
+            }
+            .skill-recap-value.g {
+                color: var(--accent);
+            }
+            .skill-recap-value.o {
+                color: var(--warm);
+            }
+
+            /* ── Responsive ── */
+            @media (max-width: 780px) {
+                .ft-timeline::before {
+                    display: none;
+                }
+                .ft-entry {
+                    grid-template-columns: 1fr;
+                }
+                .ft-dot {
+                    display: none;
+                }
+                .task-grid {
+                    grid-template-columns: 1fr;
+                }
+                .img-mosaic.three,
+                .img-mosaic.two {
+                    grid-template-columns: 1fr;
+                }
+                .img-slot.tall {
+                    min-height: 200px;
+                    grid-row: auto;
+                }
+                .skill-recap-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+        <div class="bg-grid" aria-hidden="true"></div>
+
+        <header class="site-header">
+            <div class="container nav-wrap">
+                <a href="index.html#home" class="brand">
+                    <span class="brand-mark">AG</span>
+                    <span class="brand-text">Anis Guechetouli</span>
+                </a>
+                <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">Menu</button>
+                <nav class="nav" id="siteNav">
+                    <a href="index.html#profil">Profil</a>
+                    <a href="index.html#parcours">Parcours</a>
+                    <a href="index.html#projets">Projets</a>
+                    <a href="veille-proxmark3.html">Veille technologique</a>
+                    <a href="entreprise-fasttrack.html">Entreprise FastTrack</a>
+                    <a href="e5.html">E5</a>
+                    <a href="e6.html">E6</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- ════════════════════════ HERO ════════════════════════ -->
+            <section class="ft-hero container reveal">
+                <div class="ft-hero-bg" aria-hidden="true"></div>
+
+                <div class="ft-hero-content">
+                    <div class="ft-company-badge">
+                        <span class="ft-company-badge-dot">FT</span>
+                        <span>FastTrack — Entreprise</span>
+                    </div>
+
+                    <p class="eyebrow">Documentation de stage · BTS SIO SISR</p>
+                    <h1>Deux stages,<br>deux métiers.</h1>
+                    <p class="lead">De la configuration réseau au développement web, retour sur deux
+                        mois d'immersion chez FastTrack — entreprise de transport — où j'ai touché à la
+                        fois à l'infrastructure et au code.</p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#stage-2025">Stage 2025 — IT</a>
+                        <a class="btn btn-ghost" href="#stage-2024">Stage 2024 — Web</a>
+                    </div>
+
+                    <div class="ft-year-pills">
+                        <span class="ft-year-pill it">2025 · Support / Réseau</span>
+                        <span class="ft-year-pill web">2024 · Développement Web</span>
+                        <span class="ft-year-pill">PHP · MySQL</span>
+                        <span class="ft-year-pill">Windows Server</span>
+                        <span class="ft-year-pill">Transport</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ════════════════════════ ENTREPRISE ════════════════════════ -->
+            <section class="doc-section container reveal">
+                <div class="doc-section-title">
+                    <span class="doc-icon">🏢</span>
+                    <h2>L'entreprise</h2>
+                </div>
+
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3>FastTrack</h3>
+                        <p>FastTrack est une entreprise de transport et de logistique. J'y ai effectué
+                            deux stages consécutifs dans le cadre de mon BTS SIO option SISR — l'un axé sur
+                            l'informatique de support et le réseau, l'autre sur le développement d'un outil
+                            web interne.</p>
+                        <div class="tech-stack" style="margin-top:0.8rem">
+                            <span class="tech-pill neu">Transport & Logistique</span>
+                            <span class="tech-pill neu">PME</span>
+                            <span class="tech-pill neu">Infrastructure hybride</span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Contexte des stages</h3>
+                        <ul>
+                            <li>2 stages d'un mois réalisés en 2024 et 2025</li>
+                            <li>Intégration au sein du service informatique</li>
+                            <li>Environnement Windows (postes + serveurs)</li>
+                            <li>Collaboration directe avec l'équipe technique</li>
+                            <li>Missions réelles, responsabilités concrètes</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ════════════════════════ TIMELINE ════════════════════════ -->
+            <section class="doc-section container reveal">
+                <div class="doc-section-title">
+                    <span class="doc-icon">📅</span>
+                    <h2>Parcours chronologique</h2>
+                </div>
+
+                <div class="ft-timeline">
+
+                    <!-- ──────── 2025 ──────── -->
+                    <div id="stage-2025" class="ft-entry reveal">
+                        <div class="ft-dot it">2025</div>
+
+                        <div class="ft-entry-body">
+
+                            <!-- Header -->
+                            <div class="stage-header it">
+                                <div class="stage-header-left">
+                                    <span class="stage-year-tag it">Janvier – Février 2025</span>
+                                    <h2 class="stage-title">Support Informatique & Réseau</h2>
+                                    <p class="stage-subtitle">Administration système · Infrastructure · Helpdesk</p>
+                                </div>
+                                <div class="stage-meta">
+                                    <span class="stage-duration it">1 mois</span>
+                                    <span class="stage-duration-label">Stage en entreprise</span>
+                                </div>
+                            </div>
+
+                            <!-- Contexte -->
+                            <div class="context-card it-ctx">
+                                <h4>Contexte de la mission</h4>
+                                <p>Intégré au sein du service IT de FastTrack, j'ai pris en charge des tâches
+                                    d'administration système et de support utilisateur au quotidien. J'ai notamment
+                                    participé à la mise en place d'un serveur de stockage distant. Ce stage m'a
+                                    permis de travailler en conditions réelles sur une infrastructure d'entreprise.</p>
+                            </div>
+
+                            <!-- Photos -->
+                            <div class="img-mosaic three">
+                                <div class="img-slot tall">
+                                    <!-- Remplacer src par ta photo -->
+                                     <img src="synology.jpeg" alt="Serveur de stockage FastTrack"> 
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">🖥️</span>
+                                        <p>Photo serveur / rack</p>
+                                    </div>
+                                    <span class="img-caption">Serveur de stockage réseau</span>
+                                </div>
+                                <div class="img-slot">
+                                    <img src="pc.jpg" alt="Montage PC">
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">🔧</span>
+                                        <p>Montage tour PC</p>
+                                    </div>
+                                    <span class="img-caption">Assemblage & tests matériels</span>
+                                </div>
+                                <div class="img-slot">
+                                    <!-- <img src="img/ft-2025-support.jpg" alt="Support utilisateur"> -->
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">🖨️</span>
+                                        <p>Poste / imprimante</p>
+                                    </div>
+                                    <span class="img-caption">Support utilisateurs</span>
+                                </div>
+                            </div>
+
+                            <!-- Missions -->
+                            <div>
+                                <p style="color:var(--muted);font-size:0.88rem;margin:0 0 0.8rem">Principales missions réalisées pendant le stage :</p>
+                                <div class="task-grid">
+
+                                    <div class="task-card">
+                                        <span class="task-icon it-c">💾</span>
+                                        <p class="task-name">Serveur de stockage & partage réseau</p>
+                                        <p class="task-desc">Configuration d'un serveur de stockage distant avec partage
+                                            réseau pour les utilisateurs internes. Gestion des droits d'accès et des
+                                            lecteurs mappés.</p>
+                                    </div>
+
+                                    <div class="task-card">
+                                        <span class="task-icon it-c">🪟</span>
+                                        <p class="task-name">Préparation de postes Windows</p>
+                                        <p class="task-desc">Installation et configuration de postes Windows : pilotes
+                                            constructeurs, logiciels métier, mises à jour système (Windows Update), jonction
+                                            au domaine.</p>
+                                    </div>
+
+                                    <div class="task-card">
+                                        <span class="task-icon it-c">🔩</span>
+                                        <p class="task-name">Montage de tours PC & tests matériels</p>
+                                        <p class="task-desc">Assemblage de tours PC à partir de composants. Tests de bon
+                                            fonctionnement : démarrage, température, vérification des composants avec outils
+                                            dédiés.</p>
+                                    </div>
+
+                                    <div class="task-card">
+                                        <span class="task-icon it-c">🆘</span>
+                                        <p class="task-name">Support utilisateur</p>
+                                        <p class="task-desc">Résolution d'incidents au quotidien : connexion au réseau,
+                                            configuration d'imprimantes, erreurs Windows, réinitialisation de mots de passe,
+                                            accompagnement.</p>
+                                    </div>
+
+                                    <div class="task-card" style="grid-column:1/-1">
+                                        <span class="task-icon it-c">📝</span>
+                                        <p class="task-name">Rédaction de procédures et guides techniques</p>
+                                        <p class="task-desc">Formalisation des procédures récurrentes sous forme de
+                                            guides pas-à-pas : préparation de poste, connexion au partage réseau,
+                                            configuration imprimante — pour faciliter la réplication et l'onboarding.</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Photo procédure / doc -->
+                            <div class="img-mosaic two">
+                                <div class="img-slot">
+                                    <!-- <img src="img/ft-2025-proc.jpg" alt="Procédure rédigée"> -->
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">📄</span>
+                                        <p>Procédure / guide</p>
+                                    </div>
+                                    <span class="img-caption">Guide technique rédigé</span>
+                                </div>
+                                <div class="img-slot">
+                                    <!-- <img src="img/ft-2025-reseau.jpg" alt="Réseau entreprise"> -->
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">🌐</span>
+                                        <p>Schéma réseau / infra</p>
+                                    </div>
+                                    <span class="img-caption">Infrastructure réseau</span>
+                                </div>
+                            </div>
+
+                            <!-- Stack -->
+                            <div class="card" style="padding:1rem">
+                                <p
+                                    style="font-size:0.8rem;color:var(--muted);margin:0 0 0.6rem;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:0.07em;font-weight:700">Technologies & outils</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill it-t">Windows Server</span>
+                                    <span class="tech-pill it-t">Active Directory</span>
+                                    <span class="tech-pill it-t">SMB / Partage réseau</span>
+                                    <span class="tech-pill it-t">Windows 10/11</span>
+                                    <span class="tech-pill neu">Drivers & firmware</span>
+                                    <span class="tech-pill neu">Helpdesk</span>
+                                    <span class="tech-pill neu">BIOS / POST</span>
+                                    <span class="tech-pill neu">Documentation technique</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ──────── 2024 ──────── -->
+                    <div id="stage-2024" class="ft-entry reveal">
+                        <div class="ft-dot web">2024</div>
+
+                        <div class="ft-entry-body">
+
+                            <!-- Header -->
+                            <div class="stage-header web">
+                                <div class="stage-header-left">
+                                    <span class="stage-year-tag web">2024</span>
+                                    <h2 class="stage-title">Développement Web</h2>
+                                    <p class="stage-subtitle">Backend PHP · MySQL · Site vitrine & formulaire de contact</p>
+                                </div>
+                                <div class="stage-meta">
+                                    <span class="stage-duration web">1 mois</span>
+                                    <span class="stage-duration-label">Stage en entreprise</span>
+                                </div>
+                            </div>
+
+                            <!-- Contexte -->
+                           <div class="context-card web-ctx">
+    <h4>Contexte du projet</h4>
+    <p>
+        Stage de développement web au sein de FastTrack — entreprise de transport.
+        J'ai participé à la création d'un site web permettant aux clients de contacter
+        l'entreprise et de faire des demandes de renseignements. Le projet couvrait le
+        développement backend en PHP, la mise en place d'une base de données MySQL, et
+        la création de pages informatives à destination des prospects et clients.
+
+        <br><br>
+
+        👉 Voir le site :
+        <a href="https://fasttrack.alwaysdata.net/" target="_blank" rel="noopener">
+            Accéder au site FastTrack
+        </a>
+    </p>
+</div>
+
+                            <!-- Photo principale -->
+                            <div class="img-slot" style="min-height:240px">
+                                <img src="fastrack.png" alt="Site web FastTrack">
+                                <div class="img-placeholder">
+                                    <span class="img-placeholder-icon">🌍</span>
+                                    <p>Capture du site web développé</p>
+                                </div>
+                                <span class="img-caption">Site web FastTrack — vue d'ensemble</span>
+                            </div>
+
+                            <!-- Missions -->
+                            <div>
+                                <p style="color:var(--muted);font-size:0.88rem;margin:0 0 0.8rem">Fonctionnalités développées :</p>
+                                <div class="task-grid">
+
+                                    <div class="task-card">
+                                        <span class="task-icon web-c">📬</span>
+                                        <p class="task-name">Formulaire de contact</p>
+                                        <p class="task-desc">Création d'un formulaire HTML permettant aux clients
+                                            d'envoyer des demandes de renseignements. Validation côté serveur en PHP et
+                                            stockage en base MySQL.</p>
+                                    </div>
+
+                                    <div class="task-card">
+                                        <span class="task-icon web-c">📊</span>
+                                        <p class="task-name">Gestion des messages</p>
+                                        <p class="task-desc">Interface d'administration simple permettant de consulter
+                                            les messages reçus, de les marquer comme lus, et de les archiver depuis une
+                                            interface dédiée.</p>
+                                    </div>
+
+                                    <div class="task-card">
+                                        <span class="task-icon web-c">📄</span>
+                                        <p class="task-name">Pages informatives</p>
+                                        <p class="task-desc">Développement des pages institutionnelles du site :
+                                            présentation de l'entreprise, services proposés, zones desservies et conditions
+                                            générales.</p>
+                                    </div>
+
+                                    <div class="task-card">
+                                        <span class="task-icon web-c">🗄️</span>
+                                        <p class="task-name">Base de données MySQL</p>
+                                        <p class="task-desc">Conception du schéma de base de données : table des
+                                            messages, horodatage, statuts. Requêtes SQL pour l'insertion, la lecture et la
+                                            mise à jour des données.</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Photos mockups / code -->
+                            <div class="img-mosaic two">
+                                <div class="img-slot">
+                                    <img src="form.png" alt="Formulaire de contact"> 
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">📋</span>
+                                        <p>Formulaire de contact</p>
+                                    </div>
+                                    <span class="img-caption">Page formulaire — vue client</span>
+                                </div>
+                                <div class="img-slot">
+                                    <img src="devis.png" alt="Interface admin messages"> 
+                                    <div class="img-placeholder">
+                                        <span class="img-placeholder-icon">🛠️</span>
+                                        <p>Interface admin</p>
+                                    </div>
+                                    <span class="img-caption">Gestion des messages — back-office</span>
+                                </div>
+                            </div>
+
+                            <!-- Stack -->
+                            <div class="card" style="padding:1rem">
+                                <p
+                                    style="font-size:0.8rem;color:var(--muted);margin:0 0 0.6rem;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:0.07em;font-weight:700">Stack technique</p>
+                                <div class="tech-stack">
+                                    <span class="tech-pill web-t">MySQL</span>
+                                    <span class="tech-pill web-t">HTML / CSS</span>
+                                    <span class="tech-pill neu">LAMP / WAMP</span>
+                                    <span class="tech-pill neu">phpMyAdmin</span>
+                                    <span class="tech-pill neu">Git</span>
+                                </div>
+                            </div>
+
+                            <!-- Photo code -->
+                            <!-- <div class="img-slot" style="min-height:160px">
+                                <img src="img/ft-2024-code.jpg" alt="Code PHP"> 
+                                <div class="img-placeholder">
+                                    <span class="img-placeholder-icon">💻</span>
+                                    <p>Extrait de code PHP / base de données</p>
+                                </div>
+                                <span class="img-caption">Extrait code — traitement du formulaire PHP</span>
+                            </div>-->
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ════════════════════════ BILAN ════════════════════════ -->
+            <section class="doc-section container reveal">
+                <div class="doc-section-title">
+                    <span class="doc-icon">📊</span>
+                    <h2>Bilan des compétences acquises</h2>
+                </div>
+
+                <div class="skill-recap-grid" style="margin-bottom:1.2rem">
+                    <div class="skill-recap-card">
+                        <span class="skill-recap-label">Durée totale</span>
+                        <span class="skill-recap-value g">2 mois</span>
+                    </div>
+                    <div class="skill-recap-card">
+                        <span class="skill-recap-label">Domaines couverts</span>
+                        <span class="skill-recap-value">IT + Web</span>
+                    </div>
+                    <div class="skill-recap-card">
+                        <span class="skill-recap-label">Entreprise</span>
+                        <span class="skill-recap-value o">FastTrack</span>
+                    </div>
+                    <div class="skill-recap-card">
+                        <span class="skill-recap-label">Missions réalisées</span>
+                        <span class="skill-recap-value g">9 missions</span>
+                    </div>
+                    <div class="skill-recap-card">
+                        <span class="skill-recap-label">Technos maîtrisées</span>
+                        <span class="skill-recap-value">PHP, MySQL</span>
+                    </div>
+                    <div class="skill-recap-card">
+                        <span class="skill-recap-label">Livrable web</span>
+                        <span class="skill-recap-value o">Site + BDD</span>
+                    </div>
+                </div>
+
+                <div class="grid two-cols">
+                    <article class="card">
+                        <h3 style="color:var(--accent)">Compétences IT — 2025</h3>
+                        <ul>
+                            <li>Administration Windows Server & partage réseau (SMB)</li>
+                            <li>Déploiement et préparation de postes en entreprise</li>
+                            <li>Assemblage matériel et diagnostics hardware</li>
+                            <li>Support utilisateur niveau 1 & 2</li>
+                            <li>Rédaction de documentation technique</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3 style="color:var(--warm)">Compétences Web — 2024</h3>
+                        <ul>
+                            <li>Développement backend PHP orienté formulaires</li>
+                            <li>Conception et requêtage base MySQL</li>
+                            <li>Intégration HTML/CSS de pages informatives</li>
+                            <li>Mise en place d'un back-office de gestion</li>
+                            <li>Cycle complet : maquette → développement → mise en ligne</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>©
+                    <span id="year"></span>
+                    Anis Guechetouli — Stage FastTrack · BTS SIO SISR</p>
+            </div>
+        </footer>
+
+        <button
+            class="back-top"
+            id="backTopBtn"
+            type="button"
+            aria-label="Remonter en haut">↑</button>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

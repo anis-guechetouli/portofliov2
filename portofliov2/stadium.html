@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Stadium Company – Missions | Anis Guechetouli</title>
+    <meta name="description" content="10 missions Stadium Company et cahier des charges — BTS SIO SISR, Anis Guechetouli."/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <style>
+        /* Page-specific overrides */
+
+        .page-header { margin-bottom: 2rem; display: grid; gap: 0.85rem; }
+        .page-header h1 { font-size: clamp(1.6rem, 3.5vw, 2.8rem); }
+        .page-lead { color: var(--muted); max-width: 62ch; margin: 0; }
+
+        /* Spotlight card – CDC */
+        .spotlight-card {
+            background: linear-gradient(135deg, rgba(130,231,191,0.1), rgba(130,231,191,0.03));
+            border: 1px solid rgba(130,231,191,0.4);
+            border-radius: 1.1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 0 1px rgba(130,231,191,0.08), var(--shadow);
+        }
+        .spotlight-card h2 {
+            font-size: 1.35rem;
+            color: var(--accent);
+        }
+        .spotlight-card p { margin: 0; color: var(--muted); }
+
+        /* Mission grid */
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Mission card */
+        .mission-doc-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            padding: 1.1rem;
+            display: grid;
+            gap: 0.65rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+        .mission-doc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.38);
+            border-color: rgba(130,231,191,0.35);
+        }
+        .mission-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+        .mission-doc-card h3 { font-size: 1rem; line-height: 1.35; }
+        .mission-doc-card p  { font-size: 0.87rem; color: var(--muted); margin: 0; line-height: 1.5; }
+        .mission-doc-card .project-actions { margin-top: 0.2rem; }
+
+        /* Button variants */
+        .btn-sm {
+            padding: 0.38rem 0.85rem;
+            font-size: 0.83rem;
+            font-weight: 700;
+            border-radius: 999px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .btn-sm:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.28); }
+        .btn-open {
+            background: linear-gradient(130deg, var(--accent-strong), var(--accent));
+            color: #03130d;
+            border: none;
+        }
+        .btn-dl {
+            border: 1px solid var(--line);
+            background: rgba(130,231,191,0.07);
+            color: var(--accent);
+        }
+
+        /* Synthèse section */
+        .synthese-section {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1rem;
+        }
+        .synthese-section h2 { font-size: 1.5rem; }
+        .synthese-photo-wrap {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .synthese-photo {
+            width: 100%;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(130,231,191,0.18);
+            display: block;
+        }
+        /* Placeholder si pas encore d'image */
+        .synthese-placeholder {
+            aspect-ratio: 16 / 7;
+            display: grid;
+            place-items: center;
+            border: 2px dashed rgba(130,231,191,0.22);
+            border-radius: 0.75rem;
+            color: var(--muted);
+            font-size: 0.86rem;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 780px) {
+            .missions-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 520px) {
+            .missions-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="index.html#home" class="brand">
+                <span class="brand-mark">AG</span>
+                <span class="brand-text">Anis Guechetouli</span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">Menu</button>
+            <nav class="nav" id="siteNav">
+                <a href="index.html#profil">Profil</a>
+                <a href="index.html#parcours">Parcours</a>
+                <a href="index.html#projets">Projets</a>
+                <a href="e5.html">E5</a>
+                <a href="e6.html">E6</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section container reveal">
+
+            <!-- En-tête de page -->
+            <div class="page-header">
+                <p class="eyebrow">BTS SIO SISR — StadiumCompany</p>
+                <h1>Stadium Company — Missions 1 à 10</h1>
+                <p class="page-lead">
+                    Cette page regroupe les 10 documents de mission ainsi que le cahier des charges du projet Stadium Company.
+                </p>
+                <div>
+                    <a class="btn btn-ghost btn-small" href="e5.html">← Retour à la page E5</a>
+                </div>
+            </div>
+
+            <!-- Cahier des charges (spotlight) -->
+            <article class="spotlight-card">
+                <h2>Cahier des charges</h2>
+                <p>Point de départ du projet Stadium Company. Ce document sert de référence pour l'ensemble des missions E5.</p>
+                <div>
+                    <a class="btn btn-primary" href="cahier-des-charges-stadiumcompany.pdf" target="_blank" rel="noopener noreferrer">
+                        Ouvrir le cahier des charges
+                    </a>
+                </div>
+            </article>
+
+            <!-- Grille des 10 missions -->
+            <div class="missions-grid">
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 01</span>
+                    <h3>Restructuration de l'infrastructure réseau</h3>
+                    <p>Refonte du réseau multi-sites — plan d'adressage, VLANs, configuration Cisco et interconnexion.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-open" href="./mission/mission-01.pdf" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 02</span>
+                    <h3>Administration des services informatiques</h3>
+                    <p>Windows Server 2022, Active Directory, DNS, DHCP, GPO, comptes et partages réseau.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-dl" href="./mission/mission-02.docx" target="_blank" rel="noopener noreferrer" download>Télécharger</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 03</span>
+                    <h3>Administration distante sécurisée</h3>
+                    <p>SSH, VPN, comptes admins différenciés, ACL et procédure d'accès distant sécurisé.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-dl" href="./mission/mission-03.docx" target="_blank" rel="noopener noreferrer" download>Télécharger</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 04</span>
+                    <h3>Redondance et continuité de service</h3>
+                    <p>Liens redondants, HSRP, failover automatique et documentation haute disponibilité.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-open" href="./mission/mission-04.pdf" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 05</span>
+                    <h3>Sécurisation Internet et DMZ</h3>
+                    <p>Architecture DMZ, pare-feu PfSense, règles de filtrage par zone et tests d'accès.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-dl" href="./mission/mission-05.docx" target="_blank" rel="noopener noreferrer" download>Télécharger</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 06</span>
+                    <h3>Wi-Fi employés et visiteurs</h3>
+                    <p>SSID distincts, authentification RADIUS, VLANs dédiés et portail captif visiteurs.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-dl" href="./mission/mission-06.docx" target="_blank" rel="noopener noreferrer" download>Télécharger</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 07</span>
+                    <h3>Gestion du parc et helpdesk</h3>
+                    <p>GLPI et OCS Inventory — inventaire, tickets, escalade automatique et rapports support.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-open" href="./mission/mission-07.pdf" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 08</span>
+                    <h3>Supervision open source</h3>
+                    <p>Nagios XI — surveillance proactive, alertes e-mail et tableaux de bord de disponibilité.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-open" href="./mission/mission-08.pdf" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 09</span>
+                    <h3>Solution de travail collaboratif</h3>
+                    <p>Déploiement de Zimbra — messagerie centralisée et communication interne sécurisée.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-open" href="./mission/mission-09.pdf" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+                    </div>
+                </article>
+
+                <article class="mission-doc-card">
+                    <span class="mission-num">Mission 10</span>
+                    <h3>Accès VAR et gestion des arbitres</h3>
+                    <p>VLAN 50, SSID dédié, GPO et scripts PowerShell pour la gestion des comptes arbitres.</p>
+                    <div class="project-actions">
+                        <a class="btn-sm btn-dl" href="./mission/mission-10.docx" target="_blank" rel="noopener noreferrer" download>Télécharger</a>
+                    </div>
+                </article>
+
+            </div>
+
+           
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="year"></span> Anis Guechetouli — Stadium Company</p>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTopBtn" type="button" aria-label="Remonter en haut">↑</button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
